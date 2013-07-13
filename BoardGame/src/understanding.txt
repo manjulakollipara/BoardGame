@@ -28,9 +28,29 @@ Loop through kPath until no more Unvisited coordinate is returned by getNextUnVi
 End of Loop
 
 call displayPath method
-	- To display the final position of K
-	- And the path that K took to reach the target
+	- To display the final position of KNIGHT
+	- And the path that KNIGHT took to reach the target
+	- The logic used is kPath contains (xCoordinate, yCoordinate, Parent( Index ), visited/UnVisited
+	- Loop kPath backward to retrieve the Parent of the current Coordinate
+		- Say for the input (1,1) initial Coordinate, kPath would look like
+		(1) [Coordinates [x=1, y=1, parent=0, visited=true], 
+		(2) [Coordinates [x=3, y=2, parent=1, visited=true], 
+		(3) [Coordinates [x=2, y=3, parent=1, visited=true], 
+		(4) [Coordinates [x=1, y=3, parent=2, visited=true], 
+		(5) [Coordinates [x=3, y=1, parent=3, visited=true], 
+		(6) [Coordinates [x=-1, y=2, parent=4, visited=true], 
+		(7) [Coordinates [x=2, y=1, parent=4, visited=true], 
+		(8) [Coordinates [x=1, y=2, parent=5, visited=false], 
+		(9) [Coordinates [x=-3, y=1, parent=6, visited=false], 
+		(10)[Coordinates [x=3, y=3, parent=7, visited=false]]
 
+	- Thus backTracking from (3,3) in kPath, get index of Parent
+		kPath.get(Parent=10) will give 7 , coordinates(2, 1)
+		kPath.get(Parent=7) will give 4, coordinates(1, 3)
+		kPath.get(Parent=4) will give 2, coordinates(3, 2)
+		kPath.get(Parent=2) will give 1, coordinates(1, 1)
+		kPath.get(Parent=1) will give 0, do nothing
+		
 method: getNextUnVisitedCoordinates 
  	- This method will loop through kPath and returns the first unvisited Coordinate 
 	- Otherwise returns null

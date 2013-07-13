@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="E:/codingchallenges/BoardGame/BoardGame.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/BoardGame/Readme.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="false" mainClassHandleIdentifier="=BoardGame/src&lt;main{Main.java[Main" manifestLocation="/BoardGame/manifest" manifestVersion="1.0" reuseManifest="true" saveManifest="true" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
+        <file path="/BoardGame/.classpath"/>
+        <javaElement handleIdentifier="=BoardGame/src"/>
+        <file path="/BoardGame/.project"/>
+        <file path="/BoardGame/.gitignore"/>
+    </selectedElements>
+</jardesc>

@@ -1,0 +1,166 @@
+Approach 2:
+
+get input coordinates from user
+say: 1,1
+
+chessBoard size: currently the size of chessBoard has been hardcoded to 3, can be modified to make user driven chessBoard
+
+kPath: (1,1,0,false)  ( xCoodrinate, yCoordinate, parent, visited )
+	 - A list that will hold the visited and Unvisited coordinates
+
+Loop through kPath until no more Unvisited coordinate is returned by getNextUnVisitedCoordinates
+	Call getNewMoves:
+		- To get the new moves from (1,1) 
+		- For this scenario, this method will return (3,2) and ( 2, 3)
+		- returns newMoves
+	
+	call updateKPath method:
+		- loop through kPath for the given newMoves
+		- add newMove Coordinate if it is not visited in kPath
+		- set parent Coordinate as visited
+		- for a given coordinate kPath would look like
+			(1,1,0,true)(3,2,1,false)(2,3,1,false)
+			
+	Check if we have reached the target Coordinate
+	- if reached exist the loop
+	- do not process any other unVisited Coordinate
+
+End of Loop
+
+call displayPath method
+	- To display the final position of K
+	- And the path that K took to reach the target
+
+method: getNextUnVisitedCoordinates 
+ 	- This method will loop through kPath and returns the first unvisited Coordinate 
+	- Otherwise returns null
+
+method: getNewMoves
+ 	- returns the list of moves that K can take for a given Coordinate
+
+______________________________________________________________
+Approach 1:
+
+Example:
+
+For a 3X3 matrix
+
+Say K=knight at initial position (x,y): (1,1)
+
+			1	2	3
+			+--+--+--+
+		1	| 1| 6| 3|
+			+--+--+--+
+		2	| 4|  | 8|
+			+--+--+--+
+		3	| 7| 2| 5|
+			+--+--+--+
+
+(2,3): (1,1)->(2,3)->
+			->(3,2)-> (1,3)->(2,1)->(3,3)
+							->(3,2)
+(3,1)
+
+Then the possible coordinates would be:
+[x=3, y=2], [x=2, y=3]]
+
+Now consider (3,2) from above list and determine the next move by calling validPath(x,y) method
+Path for (3,2): (1,3)->(2,1)->(3,3)
+
+Use this array to keep track of the number of path used to reach the bottom right corner of the chessBoard
+
+visitedCellsArray
+[1][1]:
+[1][2]
+[1][3]=v
+
+[2][1]=v
+[2][2]
+[2][3]
+
+[3][1]
+[3][2]=v
+[3][3]=v
+
+NumberOfMoves: 4 
+to get the list of valid coordinates that K can occupy call validPath(x, y)-> given below
+
+Now consider (2,3) from (3,2) and ( 2,3): 
+Path for (2,3): (3,1)->((1,2)->(3,3)
+
+visitedCellsArray
+[1][1]
+[1][2]=v
+[1][3]
+
+[2][1]
+[2][2]
+[2][3]=v
+
+[3][1]=v
+[3][2]
+[3][3]=v
+
+count=4
+
+consider the smallest path that can be used to make the K reach bottom right corner of the chessboard
+
+---------------------------
+consider 2nd example:
+
+Let K be at (x,y)= (2,1)
+(2,1):  (3,3)
+
+visitedCellsArray
+[1][1]
+[1][2]
+[1][3]
+
+[2][1]
+[2][2]
+[2][3]
+
+[3][1]
+[3][2]
+[3][3]=v
+
+
+consider 3nd example:
+
+Let K be at (x,y)= (3,2)
+(3,2):  (1,3)->(2,1)->(3,3)
+
+visitedCellsArray
+[1][1]
+[1][2]
+[1][3]=v
+
+[2][1]=v
+[2][2]
+[2][3]
+
+[3][1]
+[3][2]
+[3][3]=v
+
+
+
+At last print the chessBoard displaying the final position of K
+---------------------------------------------------------
+various scenarios that K can be moved in x and Y are
+
+validPath(x,y)
+x,y:  
+	(x+2)(y+1)
+	(x+2)(y-1)
+	(x-2)(y+1)
+	(x-2)(y-1)
+
+	(y+2)(x+1)
+	(y+2)(x-1)
+	(y-2)(x+1)
+	(y-2)(x-1)
+
+Note: ensure that x and y should always be within the range of 1 and 3 ( if the size is 3). 
+
+

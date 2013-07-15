@@ -16,13 +16,13 @@ Loop through kPath until no more Unvisited coordinate is returned by getNextUnVi
 	
 	call updateKPath method:
 		- loop through kPath for the given newMoves
-		- add newMove Coordinate if it is not visited in kPath
+		- add newMove Coordinate to kPath if it is not visited in kPath
 		- set parent Coordinate as visited
 		- for a given coordinate kPath would look like
 			(1,1,0,true)(3,2,1,false)(2,3,1,false)
 			
 	Check if we have reached the target Coordinate
-	- if reached exist the loop
+	- if reached exit the loop
 	- do not process any other unVisited Coordinate
 
 End of Loop
